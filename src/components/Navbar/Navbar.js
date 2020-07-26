@@ -9,10 +9,11 @@ import * as ROUTES from "../../Routes";
 const mapStateToProps = (state) => {
   return {
     selectedBook: state.books.selectedBook,
+    cart: state.cart,
   };
 };
 
-const Navbar = ({ selectedBook }) => {
+const Navbar = ({ selectedBook, cart }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const handleExpandClick = () => {
@@ -43,7 +44,7 @@ const Navbar = ({ selectedBook }) => {
         </li>
         <li>
           <NavLink to={ROUTES.CART} exact className="nav-links">
-            Cart
+            {cart?.items?.length ? `Cart (${cart.items.length})` : "Cart"}
           </NavLink>
         </li>
       </ul>
