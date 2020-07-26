@@ -15,9 +15,6 @@ const bookSlice = createSlice({
   initialState: { totalCount: 0, items: [], selectedBook: null },
   reducers: {
     // non async reducers
-    setSelectedBook: (state, action) => {
-      state.selectedBook = action.payload;
-    },
   },
   extraReducers: {
     // async reducers
@@ -28,7 +25,5 @@ const bookSlice = createSlice({
     },
   },
 });
-
-export const { setSelectedBook } = bookSlice.actions;
 
 export default bookSlice;

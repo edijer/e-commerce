@@ -8,12 +8,12 @@ import * as ROUTES from "../../Routes";
 
 const mapStateToProps = (state) => {
   return {
-    selectedBook: state.books.selectedBook,
+    currentPage: state.currentPage,
     cart: state.cart,
   };
 };
 
-const Navbar = ({ selectedBook, cart }) => {
+const Navbar = ({ currentPage, cart }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const handleExpandClick = () => {
@@ -23,8 +23,8 @@ const Navbar = ({ selectedBook, cart }) => {
   return (
     <nav className="navbar">
       <span className="title">
-        {selectedBook
-          ? `eCommerce Site | ${selectedBook.title}`
+        {currentPage?.title
+          ? `eCommerce Site | ${currentPage.title}`
           : "eCommerce Site"}
       </span>
       <ul

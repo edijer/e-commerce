@@ -4,11 +4,13 @@ import cartSlice from "./cartSlice";
 
 // This middleware will warn us if we accidentally mutate Redux state
 import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
+import currentPageSlice from "./currentPageSlice";
 
 export const store = configureStore({
   reducer: {
     books: bookSlice.reducer,
     cart: cartSlice.reducer,
+    currentPage: currentPageSlice.reducer,
   },
   middleware: [...getDefaultMiddleware(), reduxImmutableStateInvariant()],
   devTools: true,

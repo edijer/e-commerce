@@ -2,28 +2,28 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import clsx from "clsx";
 
-import { setSelectedBook } from "../../stores/bookSlice";
+import { setTitle } from "../../stores/currentPageSlice";
 import css from "./Details.module.css";
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setSelectedBook: (book) => {
-      dispatch(setSelectedBook(book));
+    setTitle: (title) => {
+      dispatch(setTitle(title));
     },
   };
 };
 
 const Details = (props) => {
-  const { setSelectedBook } = props;
+  const { setTitle } = props;
   const [book] = useState(props.location.state.book);
 
   useEffect(() => {
-    setSelectedBook(book);
+    setTitle(book.title);
 
     return function cleanup() {
-      setSelectedBook(null);
+      setTitle("");
     };
-  }, [book, setSelectedBook]);
+  }, [book, setTitle]);
 
   return (
     <div className={css.root}>
