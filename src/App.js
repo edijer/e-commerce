@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import clsx from "clsx";
 import "./App.css";
 
 function App() {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const handleGG = () => {
+    setShowMenu(!showMenu);
+  };
   return (
     <nav className="navbar">
       <span className="title">eCommerce Site</span>
-      <ul className="main-nav">
+      <ul
+        className={clsx("main-nav", {
+          "menu-active": showMenu,
+        })}
+      >
         <li>
           <a href="#" className="nav-links">
             Home
@@ -22,7 +32,11 @@ function App() {
           </a>
         </li>
       </ul>
-      <span className="navbar-toggle">Expand</span>
+      <span className="navbar-toggle">
+        <button onClick={handleGG} className="link-button">
+          Expand
+        </button>
+      </span>
     </nav>
   );
 }
