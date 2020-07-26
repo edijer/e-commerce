@@ -1,0 +1,35 @@
+.root {
+  height: 100%;
+  padding: 15px;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.bookImage {
+  width: 400px;
+}
+
+.bookDetails {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 10px;
+}
+
+.bookTitle {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.bookActionSection {
+  display: flex;
+  grid-gap: 20px;
+}
+
+.button {
+  width: 120px;
+}

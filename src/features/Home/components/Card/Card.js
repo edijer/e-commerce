@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import clsx from "clsx";
 import { Link } from "react-router-dom";
 
-import "./Card.css";
+import css from "./Card.module.css";
 import * as ROUTES from "../../../../Routes";
 
 const Card = ({ book }) => {
   return (
-    <div className="card" key={book.id}>
-      <img src={book.imageUrl} alt={book.title} className="book-thumbnail" />
-      <div className="book-details">
+    <div className={css.card} key={book.id}>
+      <img src={book.imageUrl} alt={book.title} className={css.bookThumbnail} />
+      <div className={css.bookDetails}>
         <Link
           to={{
             pathname: ROUTES.DETAILS,
@@ -19,12 +20,12 @@ const Card = ({ book }) => {
           }}
           style={{ textDecoration: "none" }}
         >
-          <div className="book-title">{book.title}</div>
-          <div className="book-description">{book.description}</div>
+          <div className={css.bookTitle}>{book.title}</div>
+          <div className={css.bookDescription}>{book.description}</div>
         </Link>
       </div>
-      <div className="book-action">
-        <button className="action-button">Buy Now</button>
+      <div className={css.bookActionSection}>
+        <button className={clsx("btn btn-primary", css.button)}>Buy Now</button>
       </div>
     </div>
   );

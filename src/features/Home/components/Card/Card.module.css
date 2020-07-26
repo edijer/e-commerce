@@ -7,23 +7,23 @@
   max-width: 100%;
 }
 
-.book-details {
+.bookThumbnail {
+  width: 100%;
+  height: 100px;
+}
+
+.bookDetails {
   padding: 4px 8px 0 8px;
   height: 100px;
   width: 90%;
 }
 
-.book-thumbnail {
-  width: 100%;
-  height: 100px;
-}
-
-.book-title {
+.bookTitle {
   text-decoration: none;
   color: #000;
 }
 
-.book-description {
+.bookDescription {
   font-size: 12px;
   color: darkslategray;
   word-break: break-all;
@@ -40,29 +40,13 @@
   text-decoration: none;
 }
 
-.book-action {
+.bookActionSection {
   padding: 8px 8px 0 8px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.action-button {
-  border: 0;
-  background: none;
-  box-shadow: none;
-  border-radius: 2px;
-  background: #3f51b5;
-  color: #fff;
-  cursor: pointer;
-  width: 100px;
-  padding: 4px;
-}
-
-.action-button:hover {
-  background: #303f9f;
-}
-
-.action-button:focus {
-  outline: none;
+.button {
+  width: 150px;
 }

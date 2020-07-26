@@ -48,7 +48,7 @@ const Navbar = ({ selectedBook }) => {
         </li>
       </ul>
       <span className="navbar-toggle">
-        <button onClick={handleExpandClick} className="link-button">
+        <button onClick={handleExpandClick} className="btn btn-link">
           Expand
         </button>
       </span>

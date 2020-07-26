@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import { Card } from "./components";
 import { loadBooks } from "../../stores/bookSlice";
-import "./Home.css";
+import css from "./Home.module.css";
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -35,14 +35,14 @@ const Home = (props) => {
   };
 
   return (
-    <div className="root">
-      <div className="cards">
+    <div className={css.root}>
+      <div className={css.cards}>
         {books.items.map((book) => {
           return <Card book={book} key={book.id} />;
         })}
       </div>
-      <div className="show-more">
-        <button className="link-button" onClick={handleShowMore}>
+      <div className={css.actionSection}>
+        <button className="btn btn-link" onClick={handleShowMore}>
           {`Show More (${books.items.length} of ${books.totalCount})`}
         </button>
       </div>
