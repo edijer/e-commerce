@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import clsx from "clsx";
+import { NavLink } from "react-router-dom";
+
 import "./Navbar.css";
+import { HOME } from "../../Routes";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -18,9 +21,9 @@ const Navbar = () => {
         })}
       >
         <li>
-          <a href="#" className="nav-links">
+          <NavLink to={HOME} exact className="nav-links">
             Home
-          </a>
+          </NavLink>
         </li>
         <li>
           <a href="#" className="nav-links">
