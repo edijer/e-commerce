@@ -50,10 +50,10 @@ const Home = (props) => {
   );
 };
 
-Card.propTypes = {
-  books: PropTypes.array.isRequired,
+Home.propTypes = {
+  books: PropTypes.object.isRequired,
   loadBooks: PropTypes.func.isRequired,
-  defaultLimit: PropTypes.number.isRequired,
+  defaultLimit: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
