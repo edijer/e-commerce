@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 
 import "./Navbar.css";
-import { HOME } from "../../Routes";
+import * as ROUTES from "../../Routes";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -21,19 +21,19 @@ const Navbar = () => {
         })}
       >
         <li>
-          <NavLink to={HOME} exact className="nav-links">
+          <NavLink to={ROUTES.HOME} exact className="nav-links">
             Home
           </NavLink>
         </li>
         <li>
-          <a href="#" className="nav-links">
+          <NavLink to={ROUTES.MY_ORDERS} exact className="nav-links">
             My Orders
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a href="#" className="nav-links">
+          <NavLink to={ROUTES.CART} exact className="nav-links">
             Cart
-          </a>
+          </NavLink>
         </li>
       </ul>
       <span className="navbar-toggle">

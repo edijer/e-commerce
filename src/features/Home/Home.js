@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { compose } from "recompose";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 
-import "./Home.css";
+import { Card } from "./components";
 import { loadBooks } from "../../stores/bookSlice";
+import "./Home.css";
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loadBooks: (page, rowsPerPage) => {
-      dispatch(loadBooks({ page, limit: rowsPerPage }));
+    loadBooks: (page, limit) => {
+      dispatch(loadBooks({ page, limit }));
     },
   };
 };
@@ -21,56 +20,33 @@ const mapStateToProps = (state) => {
 };
 
 const Home = (props) => {
-  const { books, loadBooks, defaultRowsPerPage = 20 } = props;
+  const { books, loadBooks, defaultLimit = 20 } = props;
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(defaultRowsPerPage);
+  const [limit] = useState(defaultLimit);
 
   useEffect(() => {
-    // page is zero based
-    loadBooks(page + 1, rowsPerPage);
-  }, [page, rowsPerPage, loadBooks]);
+    loadBooks(page + 1, limit);
+  }, [page, limit, loadBooks]);
+
+  const handleShowMore = () => {
+    setPage(page + 1);
+  };
 
   return (
     <div className="root">
       <div className="cards">
-        {books.items.slice(0, rowsPerPage).map((book) => {
-          return (
-            <div className="card" key={book.id}>
-              <img
-                src={book.imageUrl}
-                alt={book.title}
-                className="book-thumbnail"
-              />
-              <div className="book-details">
-                <div>{book.title}</div>
-                <div className="book-description">{book.description}</div>
-              </div>
-              <div className="book-action">
-                <button className="action-button">Buy Now</button>
-              </div>
-            </div>
-          );
+        {books.items.map((book) => {
+          return <Card book={book} key={book.id} />;
         })}
-
-        {/* <div class="card">ONE</div>
-        <div class="card">TWO</div>
-        <div class="card">THREE</div>
-        <div class="card">FOUR</div>
-        <div class="card">FIVE</div>
-        <div class="card">SIX</div>
-        <div class="card">SEVEN</div>
-        <div class="card">EIGHT</div>
-        <div class="card">NINE</div>
-        <div class="card">TEN</div>
-        <div class="card">ELEVEN</div>
-        <div class="card">TWELVE</div> */}
+      </div>
+      <div className="show-more">
+        <button className="link-button" onClick={handleShowMore}>
+          {`Show More (${books.items.length} of ${books.totalCount})`}
+        </button>
       </div>
     </div>
   );
 };
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withRouter
-)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

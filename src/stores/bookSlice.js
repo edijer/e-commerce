@@ -19,9 +19,8 @@ const bookSlice = createSlice({
   extraReducers: {
     // async reducers
     [loadBooks.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.totalCount = payload.totalCount;
-      state.items = payload.books;
+      state.items = state.items.concat(payload.books);
     },
   },
 });
