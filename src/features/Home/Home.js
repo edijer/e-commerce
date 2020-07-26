@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import { Card } from "./components";
 import { loadBooks } from "../../stores/bookSlice";
@@ -47,6 +48,12 @@ const Home = (props) => {
       </div>
     </div>
   );
+};
+
+Card.propTypes = {
+  books: PropTypes.array.isRequired,
+  loadBooks: PropTypes.func.isRequired,
+  defaultLimit: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
