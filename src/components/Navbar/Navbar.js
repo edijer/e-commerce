@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import clsx from "clsx";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import "./Navbar.css";
 import * as ROUTES from "../../Routes";
 
-const Navbar = () => {
+const mapStateToProps = (state) => {
+  return {
+    selectedBook: state.books.selectedBook,
+  };
+};
+
+const Navbar = ({ selectedBook }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const handleExpandClick = () => {
@@ -14,7 +21,11 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <span className="title">eCommerce Site</span>
+      <span className="title">
+        {selectedBook
+          ? `eCommerce Site | ${selectedBook.title}`
+          : "eCommerce Site"}
+      </span>
       <ul
         className={clsx("main-nav", {
           "menu-active": showMenu,
@@ -45,4 +56,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default connect(mapStateToProps)(Navbar);

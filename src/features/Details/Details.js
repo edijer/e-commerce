@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
+import { setSelectedBook } from "../../stores/bookSlice";
 import "./Details.css";
 
-const Details = () => {
-  console.log("GG");
-  return <div className="root">GG</div>;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setSelectedBook: (book) => {
+      dispatch(setSelectedBook(book));
+    },
+  };
 };
 
-export default Details;
+const Details = (props) => {
+  const { setSelectedBook } = props;
+  const [book] = useState(props.location.state.book);
+
+  useEffect(() => {
+    setSelectedBook(book);
+
+    return function cleanup() {
+      setSelectedBook(null);
+    };
+  }, [book, setSelectedBook]);
+
+  return (
+    <div className="root">
+      <div className="book-image"></div>
+      <div className="book-details"></div>
+    </div>
+  );
+};
+
+export default connect(null, mapDispatchToProps)(Details);

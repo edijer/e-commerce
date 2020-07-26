@@ -14,7 +14,7 @@ const Card = ({ book }) => {
           to={{
             pathname: ROUTES.DETAILS,
             state: {
-              book,
+              book: book,
             },
           }}
           style={{ textDecoration: "none" }}

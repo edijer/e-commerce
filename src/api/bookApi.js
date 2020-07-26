@@ -12,7 +12,7 @@ export const getBooks = async (page, limit) => {
     });
     const books = await response.json();
     const totalCount = parseInt(response.headers.get("X-Total-Count"));
-    return { totalCount, books };
+    return { totalCount, books, page };
   } catch (error) {
     throw error;
   }
