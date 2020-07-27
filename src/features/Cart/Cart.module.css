@@ -1,0 +1,38 @@
+.root {
+  height: 100%;
+  padding: 15px;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(479px, auto));
+  grid-gap: 20px;
+}
+
+.billing {
+  display: flex;
+}
+
+.cartItemRow {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.cartItemText {
+  width: 100%;
+}
+
+.cartItemPrice {
+  font-weight: bold;
+}
+
+.cartItemTitle {
+  font-weight: bold;
+}
+
+.cartItemSubTitle {
+  font-size: 12px;
+}
