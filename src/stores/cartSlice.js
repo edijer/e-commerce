@@ -16,7 +16,7 @@ export const addToCart = createAsyncThunk(
     const { dispatch } = thunkApi;
     try {
       await cartApi.addToCart(bookId);
-      dispatch(loadCart());
+      await dispatch(loadCart());
     } catch (error) {
       throw error;
     }
