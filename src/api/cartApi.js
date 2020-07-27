@@ -21,7 +21,7 @@ export const getCart = async () => {
 export const addToCart = async (bookId) => {
   try {
     const url = `${apiUrl}cart`;
-    const response = await fetch(url, {
+    await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
@@ -32,10 +32,21 @@ export const addToCart = async (bookId) => {
         bookId: bookId,
       }),
     });
+  } catch (error) {
+    throw error;
+  }
+};
 
-    const addedItem = await response.json();
-    const totalCount = parseInt(response.headers.get("X-Total-Count"));
-    return { totalCount, addedItem };
+export const removeFromCart = async (bookId) => {
+  try {
+    const url = `${apiUrl}cart/${bookId}`;
+    await fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
   } catch (error) {
     throw error;
   }

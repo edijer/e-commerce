@@ -23,6 +23,20 @@ export const addToCart = createAsyncThunk(
   }
 );
 
+export const removeFromCart = createAsyncThunk(
+  "cart/addToCart",
+  async (args, thunkApi) => {
+    const { bookId } = args;
+    const { dispatch } = thunkApi;
+    try {
+      await cartApi.removeFromCart(bookId);
+      await dispatch(loadCart());
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: { items: [] },
