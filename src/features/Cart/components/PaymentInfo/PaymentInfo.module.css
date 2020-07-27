@@ -1,0 +1,13 @@
+.paymentRow {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.paymentHeader {
+  width: 100%;
+}
+
+.paymentPrice {
+  font-weight: bold;
+}

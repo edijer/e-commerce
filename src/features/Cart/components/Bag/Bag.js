@@ -2,6 +2,7 @@ import React from "react";
 
 import { formatCurrency } from "../../../../util/format";
 import css from "./Bag.module.css";
+import cartCss from "../../Cart.module.css";
 
 const Bag = ({ cart }) => {
   return (
@@ -12,18 +13,12 @@ const Bag = ({ cart }) => {
       <div>
         {cart.items.map((item) => {
           return (
-            <div className={css.cartItemRow} key={item.id}>
-              <div className={css.cartItemText}>
-                <div className={css.cartItemTitle}>{item.book.title}</div>
-                <div
-                  className={css.cartItemSubTitle}
-                >{`Author: ${item.book.author}`}</div>
-                <div
-                  className={css.cartItemSubTitle}
-                >{`ISBN: ${item.book.isbn}`}</div>
-                <div
-                  className={css.cartItemSubTitle}
-                >{`Quantity: ${item.quantity}`}</div>
+            <div className={cartCss.row} key={item.id}>
+              <div className={cartCss.fullWidth}>
+                <div className={cartCss.bold}>{item.book.title}</div>
+                <div className="text-xs">{`Author: ${item.book.author}`}</div>
+                <div className="text-xs">{`ISBN: ${item.book.isbn}`}</div>
+                <div className="text-xs">{`Quantity: ${item.quantity}`}</div>
                 <div className={css.cartItemActionSection}>
                   <div className={css.cartItemAction}>
                     <button className="btn btn-link text-sm">Add</button>
@@ -33,7 +28,7 @@ const Bag = ({ cart }) => {
                   </div>
                 </div>
               </div>
-              <div className={css.cartItemPrice}>
+              <div className={cartCss.bold}>
                 <div className="text-primary">
                   {formatCurrency(item.book.price)}
                 </div>

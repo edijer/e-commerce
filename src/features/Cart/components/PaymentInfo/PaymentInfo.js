@@ -1,6 +1,19 @@
 import React from "react";
 
 import { formatCurrency } from "../../../../util/format";
+import css from "../../Cart.module.css";
+
+const PaymentRow = (props) => {
+  const { title, price } = props;
+  return (
+    <div className={css.row}>
+      <div className={css.fullWidth}>{title}</div>
+      <div className={css.bold}>
+        <span className="text-primary">{formatCurrency(price)}</span>
+      </div>
+    </div>
+  );
+};
 
 const PaymentInfo = (props) => {
   const { cart, className } = props;
@@ -10,15 +23,11 @@ const PaymentInfo = (props) => {
       <h3>Payment Info</h3>
       <hr />
       <div>
-        <div>Sub Total</div>
-        <div>{formatCurrency(cart.subTotal)}</div>
-        <div>Tax</div>
-        <div>{formatCurrency(cart.taxFee)}</div>
-        <div>Shipping Charges</div>
-        <div>{formatCurrency(cart.shippingFee)}</div>
+        <PaymentRow title={"Sub Total"} price={cart.subTotal} />
+        <PaymentRow title={"Tax"} price={cart.taxFee} />
+        <PaymentRow title={"Shipping Charges"} price={cart.shippingFee} />
         <hr />
-        <div>Total</div>
-        <div>{formatCurrency(cart.grandTotal)}</div>
+        <PaymentRow title={"Total"} price={cart.grandTotal} />
       </div>
     </div>
   );

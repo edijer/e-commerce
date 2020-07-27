@@ -4,22 +4,6 @@
   flex-direction: row;
 }
 
-.cartItemText {
-  width: 100%;
-}
-
-.cartItemPrice {
-  font-weight: bold;
-}
-
-.cartItemTitle {
-  font-weight: bold;
-}
-
-.cartItemSubTitle {
-  font-size: 12px;
-}
-
 .cartHeader {
   margin-top: 20px;
   text-align: right;

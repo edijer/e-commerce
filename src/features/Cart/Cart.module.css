@@ -18,3 +18,17 @@
 .paymentInfo {
   margin-top: 40px;
 }
+
+.row {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.bold {
+  font-weight: bold;
+}

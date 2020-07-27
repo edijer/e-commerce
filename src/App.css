@@ -43,3 +43,7 @@
 .text-sm {
   font-size: 14px !important;
 }
+
+.text-xs {
+  font-size: 12px !important;
+}
