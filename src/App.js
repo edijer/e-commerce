@@ -6,6 +6,7 @@ import { Navbar } from "./components";
 import { Home, Details, MyOrders, Cart, NotFound } from "./features";
 import * as ROUTES from "./Routes";
 import { loadCart } from "./stores/cartSlice";
+import { loadRates } from "./stores/rateSlice";
 import "./App.css";
 
 const mapDispatchToProps = (dispatch) => {
@@ -13,13 +14,17 @@ const mapDispatchToProps = (dispatch) => {
     loadCart: () => {
       dispatch(loadCart());
     },
+    loadRates: () => {
+      dispatch(loadRates());
+    },
   };
 };
 
-function App({ loadCart }) {
+function App({ loadCart, loadRates }) {
   useEffect(() => {
     loadCart();
-  }, [loadCart]);
+    loadRates();
+  }, [loadCart, loadRates]);
 
   return (
     <>

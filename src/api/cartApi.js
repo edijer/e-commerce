@@ -1,8 +1,8 @@
-export const baseApiUrl = `${process.env.REACT_APP_API_URL}/api/v1/`;
+export const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1/`;
 
 export const getCart = async () => {
   try {
-    const url = `${baseApiUrl}cart`;
+    const url = `${apiUrl}cart`;
     const response = await fetch(url, {
       method: "GET",
       headers: {
@@ -20,7 +20,7 @@ export const getCart = async () => {
 
 export const addToCart = async (bookId) => {
   try {
-    const url = `${baseApiUrl}cart`;
+    const url = `${apiUrl}cart`;
     const response = await fetch(url, {
       method: "POST",
       headers: {

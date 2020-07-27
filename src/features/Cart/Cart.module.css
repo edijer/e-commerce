@@ -15,39 +15,6 @@
   display: flex;
 }
 
-.cartItemRow {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: row;
-}
-
-.cartItemText {
-  width: 100%;
-}
-
-.cartItemPrice {
-  font-weight: bold;
-}
-
-.cartItemTitle {
-  font-weight: bold;
-}
-
-.cartItemSubTitle {
-  font-size: 12px;
-}
-
-.cartHeader {
-  margin-top: 20px;
-  text-align: right;
-}
-
-.cartItemActionSection {
-  margin-top: 10px;
-  display: flex;
-}
-
-.cartItemAction {
-  padding: 0;
-  margin-right: 5px;
+.paymentInfo {
+  margin-top: 40px;
 }

@@ -584,8 +584,17 @@ const cart = [
   },
 ];
 
+const rates = [
+  {
+    countryCode: "SG",
+    tax: 0.1,
+    shipping: 5.0,
+  },
+];
+
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
   books,
   cart,
+  rates,
 };
