@@ -13,7 +13,7 @@ const Bag = ({ cart }) => {
       <div>
         {cart.items.map((item) => {
           return (
-            <div className={cartCss.row} key={item.id}>
+            <div className={cartCss.row} key={item.book.id}>
               <div className={cartCss.fullWidth}>
                 <div className={cartCss.bold}>{item.book.title}</div>
                 <div className="text-xs">{`Author: ${item.book.author}`}</div>

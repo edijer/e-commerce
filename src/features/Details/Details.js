@@ -1,21 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { compose } from "recompose";
 import clsx from "clsx";
+import { withRouter } from "react-router-dom";
 
 import { setTitle } from "../../stores/currentPageSlice";
+import { addToCart } from "../../stores/cartSlice";
 import css from "./Details.module.css";
+import * as ROUTES from "../../Routes";
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setTitle: (title) => {
       dispatch(setTitle(title));
     },
+    addToCart: async (bookId) => {
+      await dispatch(addToCart({ bookId }));
+    },
   };
 };
 
 const Details = (props) => {
-  const { setTitle } = props;
-  const [book] = useState(props.location.state.book);
+  const { history, setTitle, addToCart } = props;
+  const book = props.location.state.book;
 
   useEffect(() => {
     setTitle(book.title);
@@ -24,6 +31,15 @@ const Details = (props) => {
       setTitle("");
     };
   }, [book, setTitle]);
+
+  const handleBuyNow = async () => {
+    await addToCart(book.id);
+    history.push(ROUTES.CART);
+  };
+
+  const handleAddToCart = async () => {
+    await addToCart(book.id);
+  };
 
   return (
     <div className={css.root}>
@@ -38,10 +54,16 @@ const Details = (props) => {
           <div>{`Pages: ${book.pageCount}`}</div>
           <div>{`ISBN: ${book.isbn}`}</div>
           <div className={css.bookActionSection}>
-            <button className={clsx("btn btn-primary", css.button)}>
+            <button
+              className={clsx("btn btn-primary", css.button)}
+              onClick={handleAddToCart}
+            >
               Add to cart
             </button>
-            <button className={clsx("btn btn-primary", css.button)}>
+            <button
+              className={clsx("btn btn-primary", css.button)}
+              onClick={handleBuyNow}
+            >
               Buy Now
             </button>
           </div>
@@ -52,4 +74,4 @@ const Details = (props) => {
   );
 };
 
-export default connect(null, mapDispatchToProps)(Details);
+export default compose(connect(null, mapDispatchToProps), withRouter)(Details);
