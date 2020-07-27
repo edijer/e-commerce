@@ -22,9 +22,34 @@ const totalCount = (items) => {
   return items.reduce((sum, item) => sum + item.quantity, 0);
 };
 
+/*
+const cartBase = {
+  items: [],
+  rate: { tax: 0, shipping: 0 },
+  get totalCount() {
+    return this.items.reduce((sum, item) => sum + item.quantity, 0);
+  },
+  get subTotal() {
+    return this.items.reduce(
+      (sum, item) => sum + item.book.price * item.quantity,
+      0
+    );
+  },
+  get taxFee() {
+    return this.subTotal * this.rate.tax;
+  },
+  get shippingFee() {
+    return this.rate.shipping;
+  },
+  get grandTotalFee() {
+    return this.subTotal + this.taxFee + this.shippingFee;
+  },
+};
+*/
+
 const cartSlice = createSlice({
   name: "cart",
-  initialState: { totalCount: 0, items: [] },
+  initialState: { items: [] },
   reducers: {
     // non async reducers
   },

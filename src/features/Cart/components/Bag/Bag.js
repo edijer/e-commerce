@@ -1,5 +1,6 @@
 import React from "react";
 
+import { formatCurrency } from "../../../../util/format";
 import css from "./Bag.module.css";
 
 const Bag = ({ cart }) => {
@@ -9,7 +10,7 @@ const Bag = ({ cart }) => {
       <div className={css.cartHeader}>Price</div>
       <hr />
       <div>
-        {cart.map((item) => {
+        {cart.items.map((item) => {
           return (
             <div className={css.cartItemRow} key={item.id}>
               <div className={css.cartItemText}>
@@ -33,7 +34,9 @@ const Bag = ({ cart }) => {
                 </div>
               </div>
               <div className={css.cartItemPrice}>
-                <div className="text-primary">{item.book.price}</div>
+                <div className="text-primary">
+                  {formatCurrency(item.book.price)}
+                </div>
               </div>
             </div>
           );

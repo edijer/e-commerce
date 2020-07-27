@@ -4,18 +4,18 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import "./Navbar.css";
+import { createCartInfo } from "../../types/cartInfo";
 import * as ROUTES from "../../Routes";
 
 const mapStateToProps = (state) => {
   return {
     currentPage: state.currentPage,
-    cart: state.cart,
+    cart: createCartInfo(state.cart.items),
   };
 };
 
 const Navbar = ({ currentPage, cart }) => {
   const [showMenu, setShowMenu] = useState(false);
-
   const handleExpandClick = () => {
     setShowMenu(!showMenu);
   };

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { setTitle } from "../../stores/currentPageSlice";
+import { createCartInfo } from "../../types/cartInfo";
 import { Bag, PaymentInfo } from "./components";
 import css from "./Cart.module.css";
 
@@ -16,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   // projection
   return {
-    cart: state.cart.items,
+    cart: createCartInfo(state.cart.items, state.rate),
   };
 };
 
