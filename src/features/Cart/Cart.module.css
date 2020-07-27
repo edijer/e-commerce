@@ -32,3 +32,9 @@
 .bold {
   font-weight: bold;
 }
+
+.actionButton {
+  padding: 0;
+  margin-right: 5px;
+  width: 100px;
+}
