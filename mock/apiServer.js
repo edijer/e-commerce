@@ -15,7 +15,7 @@ const jsonServer = require("json-server");
 const server = jsonServer.create();
 const path = require("path");
 const router = jsonServer.router(path.join(__dirname, "db.json"));
-const mockData = require("./mockData");
+const fs = require("fs");
 
 // Can pass a limited number of options to this to override (some) defaults. See https://github.com/typicode/json-server#api
 const middlewares = jsonServer.defaults({
@@ -43,6 +43,39 @@ server.use((req, res, next) => {
   }
   // Continue to JSON Server router
   next();
+});
+
+server.get("/api/v1/cart/", function (req, res, next) {
+  /* HACKS. I transform the cart into {quantity, book} format
+   */
+
+  const groupCartByBooks = (books, cart) => {
+    const key = "bookId";
+
+    return cart.reduce((result, currentValue) => {
+      const bookId = currentValue[key];
+
+      const exists = result.find((i) => i.book.id === bookId);
+      if (exists) {
+        exists.quantity += 1;
+      } else {
+        const book = books.find((i) => i.id === bookId);
+        result.push({ quantity: 1, book: book });
+      }
+
+      return result;
+    }, []);
+  };
+
+  fs.readFile(path.join(__dirname, "db.json"), "utf8", (error, jsonString) => {
+    if (error) {
+      console.log("Error reading db.json", error);
+    } else {
+      const parsed = JSON.parse(jsonString);
+      const grouped = groupCartByBooks(parsed.books, parsed.cart);
+      res.status(200).jsonp(grouped);
+    }
+  });
 });
 
 // Use default router

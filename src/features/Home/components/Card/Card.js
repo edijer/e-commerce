@@ -11,8 +11,8 @@ import * as ROUTES from "../../../../Routes";
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (book) => {
-      dispatch(addToCart(book));
+    addToCart: (bookId) => {
+      dispatch(addToCart({ bookId }));
     },
   };
 };
@@ -21,7 +21,7 @@ const Card = (props) => {
   const { history, book, addToCart } = props;
 
   const handleBuyNow = () => {
-    addToCart(book);
+    addToCart(book.id);
     history.push(ROUTES.CART);
   };
 

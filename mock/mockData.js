@@ -554,33 +554,15 @@ const books = [
 const cart = [
   {
     id: 1,
-    quantity: 2,
-    book: {
-      id: 11,
-      title: "Baadasssss! (How to Get the Man's Foot Outta Your Ass)",
-      description:
-        "Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc.",
-      author: "Daisie Gerrie",
-      pageCount: 267,
-      isbn: "136320043-7",
-      price: 10.85,
-      imageUrl: "http://dummyimage.com/250x178.png/dddddd/000000",
-    },
+    bookId: 11,
   },
   {
     id: 2,
-    quantity: 1,
-    book: {
-      id: 1,
-      title: "Porgy and Bess",
-      description:
-        "Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis.",
-      author: "Elsy Seale",
-      pageCount: 443,
-      isbn: "789528077-5",
-      price: 36.26,
-      imageUrl: "http://dummyimage.com/233x191.png/dddddd/000000",
-    },
+    bookId: 1,
+  },
+  {
+    id: 3,
+    bookId: 11,
   },
 ];
 
