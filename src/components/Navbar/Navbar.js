@@ -44,7 +44,7 @@ const Navbar = ({ currentPage, cart }) => {
         </li>
         <li>
           <NavLink to={ROUTES.CART} exact className="nav-links">
-            {cart?.items?.length ? `Cart (${cart.items.length})` : "Cart"}
+            {cart?.totalCount ? `Cart (${cart.totalCount})` : "Cart"}
           </NavLink>
         </li>
       </ul>

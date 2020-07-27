@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import clsx from "clsx";
 
 import { setTitle } from "../../stores/currentPageSlice";
 import css from "./Cart.module.css";
@@ -13,8 +14,9 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
+  // projection
   return {
-    cart: state.cart,
+    cart: state.cart.items,
   };
 };
 
@@ -38,23 +40,36 @@ const Cart = (props) => {
           </div>
           <div>
             <div>Shopping Bag</div>
-            <div>Price</div>
+            <div className={css.cartHeader}>Price</div>
             <hr />
             <div>
-              {cart.items.map((book) => {
+              {cart.map((item) => {
                 return (
-                  <div className={css.cartItemRow} key={book.id}>
+                  <div className={css.cartItemRow} key={item.id}>
                     <div className={css.cartItemText}>
-                      <div className={css.cartItemTitle}>{book.title}</div>
+                      <div className={css.cartItemTitle}>{item.book.title}</div>
                       <div
                         className={css.cartItemSubTitle}
-                      >{`Author: ${book.author}`}</div>
+                      >{`Author: ${item.book.author}`}</div>
                       <div
                         className={css.cartItemSubTitle}
-                      >{`ISBN: ${book.isbn}`}</div>
+                      >{`ISBN: ${item.book.isbn}`}</div>
+                      <div
+                        className={css.cartItemSubTitle}
+                      >{`Quantity: ${item.quantity}`}</div>
+                      <div className={css.cartItemActionSection}>
+                        <div className={css.cartItemAction}>
+                          <button className="btn btn-link text-sm">Add</button>
+                        </div>
+                        <div className={css.cartItemAction}>
+                          <button className="btn btn-link text-sm">
+                            Delete
+                          </button>
+                        </div>
+                      </div>
                     </div>
                     <div className={css.cartItemPrice}>
-                      <div className="text-primary">{book.price}</div>
+                      <div className="text-primary">{item.book.price}</div>
                     </div>
                   </div>
                 );

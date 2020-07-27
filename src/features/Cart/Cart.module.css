@@ -36,3 +36,18 @@
 .cartItemSubTitle {
   font-size: 12px;
 }
+
+.cartHeader {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.cartItemActionSection {
+  margin-top: 10px;
+  display: flex;
+}
+
+.cartItemAction {
+  padding: 0;
+  margin-right: 5px;
+}

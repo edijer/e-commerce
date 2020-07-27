@@ -39,3 +39,7 @@
 .text-primary {
   color: #3f51b5 !important;
 }
+
+.text-sm {
+  font-size: 14px !important;
+}

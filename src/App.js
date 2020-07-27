@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import "./App.css";
 
 import { Navbar } from "./components";
 import { Home, Details, MyOrders, Cart, NotFound } from "./features";
 import * as ROUTES from "./Routes";
+import { loadCart } from "./stores/cartSlice";
+import "./App.css";
 
-function App() {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadCart: () => {
+      dispatch(loadCart());
+    },
+  };
+};
+
+function App({ loadCart }) {
+  useEffect(() => {
+    loadCart();
+  }, [loadCart]);
+
   return (
     <>
       <Navbar />
@@ -21,4 +35,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);
