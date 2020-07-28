@@ -28,10 +28,8 @@ const mapStateToProps = (state) => {
 };
 
 const Home = (props) => {
-  const { history, books, loadBooks, addToCart, defaultLimit = 20 } = props;
-
+  const { history, books, loadBooks, addToCart, limit = 20 } = props;
   const [page, setPage] = useState(0);
-  const [limit] = useState(defaultLimit);
 
   useEffect(() => {
     loadBooks(page + 1, limit);
@@ -48,7 +46,7 @@ const Home = (props) => {
 
   return (
     <div className={css.root}>
-      <div className={css.cards}>
+      <div className={css.cards} role="list">
         {books.items.map((book) => {
           return <Card book={book} key={book.id} handleBuyNow={handleBuyNow} />;
         })}
@@ -69,7 +67,7 @@ Home.propTypes = {
   books: PropTypes.object.isRequired,
   loadBooks: PropTypes.func.isRequired,
   addToCart: PropTypes.func.isRequired,
-  defaultLimit: PropTypes.number,
+  limit: PropTypes.number,
 };
 
 export default compose(

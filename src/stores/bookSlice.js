@@ -12,7 +12,7 @@ export const loadBooks = createAsyncThunk("books/loadBooks", async (args) => {
 
 const bookSlice = createSlice({
   name: "books",
-  initialState: { totalCount: 0, items: [], selectedBook: null },
+  initialState: { totalCount: 0, items: [] },
   reducers: {
     // non async reducers
   },

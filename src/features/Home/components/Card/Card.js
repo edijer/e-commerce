@@ -10,7 +10,7 @@ const Card = (props) => {
   const { book, handleBuyNow } = props;
 
   return (
-    <div className={css.card} key={book.id}>
+    <div className={css.card} key={book.id} role="listitem">
       <div className={css.bookThumbnailSection}>
         <img
           src={book.imageUrl}
