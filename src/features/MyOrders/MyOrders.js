@@ -32,7 +32,7 @@ const mapStateToProps = (state) => {
 
 const MyOrders = (props) => {
   const { orders, loadOrders, setTitle, defaultLimit = 20 } = props;
-  const [page, setPage] = useState(0);
+  const [page] = useState(0);
   const [limit] = useState(defaultLimit);
 
   useEffect(() => {
