@@ -26,3 +26,9 @@
   border: 1px solid #e0e0e0;
   border-radius: 3px;
 }
+
+.input:focus {
+  outline: none !important;
+  border: 1px solid #7986cb;
+  border-radius: 3px;
+}

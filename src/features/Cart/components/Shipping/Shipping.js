@@ -1,39 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 
 import css from "./Shipping.module.css";
 import cartCss from "../../Cart.module.css";
 
 const Shipping = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    addressLine1: "",
+    addressLine2: "",
+    city: "",
+    country: "",
+    postalCode: "",
+    phoneNumber: "",
+  });
+
+  const handleChange = ({ target }) => {
+    setFormData({
+      ...formData,
+      [target.name]: target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div>
       <h3>Shopping Address</h3>
       <div className={css.header}>&nbsp;</div>
-      <form className={css.form}>
+      <form className={css.form} noValidate onSubmit={handleSubmit}>
         <div className={css.row}>
           <input
             type="text"
             placeholder="First name"
             className={clsx(css.rowItem, css.input)}
+            name={formData.firstName}
+            onChange={handleChange}
           />
           <input
             type="text"
             placeholder="Last name"
             className={clsx(css.rowItem, css.input)}
+            name={formData.lastName}
+            onChange={handleChange}
           />
         </div>
         <div className={css.row}>
           <input
             type="text"
-            placeholder="Address"
+            placeholder="Address Line 1"
             className={clsx(css.rowItem, css.input)}
+            name={formData.addressLine1}
+            onChange={handleChange}
           />
         </div>
         <div className={css.row}>
           <input
             type="text"
-            placeholder="Unit number"
+            placeholder="Address Line 2"
             className={clsx(css.rowItem, css.input)}
+            name={formData.addressLine2}
+            onChange={handleChange}
           />
         </div>
         <div className={css.row}>
@@ -41,6 +71,8 @@ const Shipping = () => {
             type="text"
             placeholder="City"
             className={clsx(css.rowItem, css.input)}
+            name={formData.city}
+            onChange={handleChange}
           />
         </div>
         <div className={css.row}>
@@ -54,6 +86,8 @@ const Shipping = () => {
             type="text"
             placeholder="Postal code"
             className={clsx(css.rowItem, css.input)}
+            name={formData.postalCode}
+            onChange={handleChange}
           />
         </div>
         <div className={css.row}>
@@ -61,12 +95,16 @@ const Shipping = () => {
             type="text"
             placeholder="Phone number"
             className={clsx(css.rowItem, css.input)}
+            name={formData.phoneNumber}
+            onChange={handleChange}
           />
         </div>
         <div className={css.row}>
-          <button className={clsx("btn btn-primary", cartCss.actionButton)}>
-            Update
-          </button>
+          <input
+            type="submit"
+            value="Update"
+            className={clsx("btn btn-primary", cartCss.actionButton)}
+          />
         </div>
       </form>
     </div>
