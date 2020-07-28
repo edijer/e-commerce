@@ -27,7 +27,14 @@ const Card = (props) => {
 
   return (
     <div className={css.card} key={book.id}>
-      <img src={book.imageUrl} alt={book.title} className={css.bookThumbnail} />
+      <div className={css.bookThumbnailSection}>
+        <img
+          src={book.imageUrl}
+          alt={book.title}
+          className={css.bookThumbnail}
+        />
+      </div>
+
       <div className={css.bookDetails}>
         <Link
           to={{

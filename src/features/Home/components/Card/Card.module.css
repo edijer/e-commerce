@@ -8,8 +8,15 @@
   max-width: 100%;
 }
 
+.bookThumbnailSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+}
+
 .bookThumbnail {
-  width: 100%;
+  width: 100px;
   height: 100px;
 }
 

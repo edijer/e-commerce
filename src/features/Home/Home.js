@@ -44,7 +44,7 @@ const Home = (props) => {
       {books.totalCount !== books.items.length && (
         <div className={css.actionSection}>
           <button className="btn btn-link" onClick={handleShowMore}>
-            {`Show More (${books.items.length} of ${books.totalCount})`}
+            <span className="text-sm">{`Show More (${books.items.length} of ${books.totalCount})`}</span>
           </button>
         </div>
       )}
