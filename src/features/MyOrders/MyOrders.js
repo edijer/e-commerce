@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import moment from "moment";
 
+import { currency, longDate } from "../../util/format";
 import { setTitle } from "../../stores/currentPageSlice";
 import { loadOrders } from "../../stores/orderSlice";
 import css from "./MyOrders.module.css";
@@ -18,8 +18,12 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
+  const sortedByDateDesc = Array.from(state.orders.items).sort((a, b) =>
+    a.date < b.date ? 1 : -1
+  );
+
   return {
-    orders: state.orders,
+    orders: sortedByDateDesc,
   };
 };
 
@@ -40,18 +44,29 @@ const MyOrders = (props) => {
   return (
     <div className={css.root}>
       <div className={css.main}>
-        {orders.items.map((order) => {
+        {orders.map((order) => {
           return (
             <div className={css.panel} key={order.id}>
               <div className={css.panelHeader}>
-                <span className="pull-left">{`Order Placed: ${moment(
+                <span className="pull-left">{`Order Placed: ${longDate(
                   order.date
-                ).format("D MMMM, YYYY")}`}</span>
+                )}`}</span>
                 <span className="pull-right">{`Status: ${order.status}`}</span>
               </div>
-              <div
-                className={css.panelDetails}
-              >{`Title: ${order.book.title}`}</div>
+              <div className={css.panelDetails}>
+                <img
+                  src={order.book.imageUrl}
+                  alt={order.book.title}
+                  className={css.bookThumbnail}
+                />
+                <div className={css.bookDetails}>
+                  <span className="text-md">{order.book.title}</span>
+                  <span className="text-xs">{`Author: ${order.book.author}`}</span>
+                  <span className="text-xs">{`Price: ${currency(
+                    order.book.price
+                  )}`}</span>
+                </div>
+              </div>
             </div>
           );
         })}

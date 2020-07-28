@@ -2,7 +2,7 @@ const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1/`;
 
 export const getOrders = async (page, limit) => {
   try {
-    const url = `${apiUrl}orders?_embed=books&_page=${page}&_limit=${limit}`;
+    const url = `${apiUrl}orders?_page=${page}&_limit=${limit}&_sort=date&_order=desc`;
     const response = await fetch(url, {
       method: "GET",
       headers: {

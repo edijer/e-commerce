@@ -584,13 +584,13 @@ const orders = [
   {
     id: 2,
     bookId: 22,
-    date: "2020-01-01",
+    date: "2020-01-02",
     status: "Delivered",
   },
   {
     id: 3,
     bookId: 23,
-    date: "2020-01-01",
+    date: "2020-01-03",
     status: "Cancelled",
   },
 ];

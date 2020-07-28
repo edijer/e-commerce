@@ -39,7 +39,9 @@ const Card = (props) => {
           style={{ textDecoration: "none" }}
         >
           <div className={css.bookTitle}>{book.title}</div>
-          <div className={css.bookDescription}>{book.description}</div>
+          <div className={clsx("text-xs", css.bookDescription)}>
+            {book.description}
+          </div>
         </Link>
       </div>
       <div className={css.bookActionSection}>

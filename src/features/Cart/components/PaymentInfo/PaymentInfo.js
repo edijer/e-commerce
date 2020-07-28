@@ -1,6 +1,6 @@
 import React from "react";
 
-import { formatCurrency } from "../../../../util/format";
+import { currency } from "../../../../util/format";
 import css from "../../Cart.module.css";
 
 const PaymentRow = (props) => {
@@ -9,7 +9,7 @@ const PaymentRow = (props) => {
     <div className={css.row}>
       <div className={css.fullWidth}>{title}</div>
       <div className={css.bold}>
-        <span className="text-primary">{formatCurrency(price)}</span>
+        <span className="text-primary">{currency(price)}</span>
       </div>
     </div>
   );

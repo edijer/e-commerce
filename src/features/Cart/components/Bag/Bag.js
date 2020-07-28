@@ -1,6 +1,6 @@
 import React from "react";
 
-import { formatCurrency } from "../../../../util/format";
+import { currency } from "../../../../util/format";
 import css from "./Bag.module.css";
 import cartCss from "../../Cart.module.css";
 
@@ -41,9 +41,7 @@ const Bag = (props) => {
                 </div>
               </div>
               <div className={cartCss.bold}>
-                <div className="text-primary">
-                  {formatCurrency(item.book.price)}
-                </div>
+                <div className="text-primary">{currency(item.book.price)}</div>
               </div>
             </div>
           );
