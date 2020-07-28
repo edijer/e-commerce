@@ -78,29 +78,6 @@ server.get("/api/v1/cart/", function (req, res, next) {
   });
 });
 
-server.get("/api/v1/orders/", function (req, res, next) {
-  /* Manually appending book relationship*/
-
-  fs.readFile(path.join(__dirname, "db.json"), "utf8", (error, jsonString) => {
-    if (error) {
-      console.log("Error reading db.json", error);
-    } else {
-      const parsed = JSON.parse(jsonString);
-      parsed.orders.forEach((order) => {
-        order.book = parsed.books.find((book) => book.id === order.bookId);
-        delete order.bookId;
-      });
-
-      //res.set("X-Total-Count", parsed.orders.length);
-      console.log(`parsed.orders.length: ${parsed.orders.length}`);
-      res
-        .set("X-Total-Count", parsed.orders.length)
-        //.status(200)
-        .json(parsed.orders);
-    }
-  });
-});
-
 // Use default router
 server.use("/api/v1", router);
 

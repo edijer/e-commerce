@@ -26,14 +26,13 @@ const mapStateToProps = (state) => {
   );
 
   return {
-    orders: sortedByDateDesc,
+    orders: { totalCount: state.orders.totalCount, items: sortedByDateDesc },
   };
 };
 
 const MyOrders = (props) => {
-  const { orders, loadOrders, setTitle, defaultLimit = 20 } = props;
-  const [page] = useState(0);
-  const [limit] = useState(defaultLimit);
+  const { orders, loadOrders, setTitle, limit = 5 } = props;
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
     loadOrders(page + 1, limit);
@@ -44,10 +43,14 @@ const MyOrders = (props) => {
     };
   }, [page, limit, loadOrders, setTitle]);
 
+  const handleShowMore = () => {
+    setPage(page + 1);
+  };
+
   return (
     <div className={css.root}>
       <div className={css.main}>
-        {orders.map((order) => {
+        {orders.items.map((order) => {
           return (
             <div className={css.panel} key={order.id}>
               <div className={css.panelHeader}>
@@ -84,6 +87,13 @@ const MyOrders = (props) => {
           );
         })}
       </div>
+      {orders.totalCount !== orders.items.length && (
+        <div className={css.actionSection}>
+          <button className="btn btn-link text-sm" onClick={handleShowMore}>
+            {`Show More (${orders.items.length} of ${orders.totalCount})`}
+          </button>
+        </div>
+      )}
     </div>
   );
 };
@@ -92,7 +102,7 @@ MyOrders.propTypes = {
   orders: PropTypes.object.isRequired,
   loadOrders: PropTypes.func.isRequired,
   setTitle: PropTypes.func.isRequired,
-  defaultLimit: PropTypes.number,
+  limit: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyOrders);

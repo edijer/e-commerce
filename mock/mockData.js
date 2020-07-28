@@ -580,18 +580,102 @@ const orders = [
     bookId: 21,
     date: "2020-01-01",
     status: "Delivered",
+    book: {
+      id: 21,
+      title: "Southland Tales",
+      description:
+        "In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst.",
+      author: "Isa Kalb",
+      pageCount: 259,
+      isbn: "335281876-2",
+      price: 36.48,
+      imageUrl: "http://dummyimage.com/180x237.bmp/5fa2dd/ffffff",
+    },
   },
   {
     id: 2,
     bookId: 22,
     date: "2020-01-02",
     status: "Delivered",
+    book: {
+      id: 22,
+      title: "It Came from Outer Space",
+      description:
+        "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante.",
+      author: "Sibeal Gallager",
+      pageCount: 472,
+      isbn: "130535455-9",
+      price: 72.35,
+      imageUrl: "http://dummyimage.com/126x104.bmp/dddddd/000000",
+    },
   },
   {
     id: 3,
     bookId: 23,
     date: "2020-01-03",
     status: "Cancelled",
+    book: {
+      id: 23,
+      title: "Mostly Martha (Bella Martha)",
+      description:
+        "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+      author: "Tedmund Basili",
+      pageCount: 437,
+      isbn: "871684799-7",
+      price: 84.66,
+      imageUrl: "http://dummyimage.com/104x218.jpg/cc0000/ffffff",
+    },
+  },
+  {
+    id: 4,
+    bookId: 1,
+    date: "2019-01-01",
+    status: "Delivered",
+    book: {
+      id: 1,
+      title: "Porgy and Bess",
+      description:
+        "Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis.",
+      author: "Elsy Seale",
+      pageCount: 443,
+      isbn: "789528077-5",
+      price: 36.26,
+      imageUrl: "http://dummyimage.com/233x191.png/dddddd/000000",
+    },
+  },
+  {
+    id: 5,
+    bookId: 2,
+    date: "2019-01-02",
+    status: "Delivered",
+    book: {
+      id: 2,
+      title: "King of Jazz",
+      description:
+        "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",
+      author: "Tally Achrameev",
+      pageCount: 209,
+      isbn: "653957594-7",
+      price: 45.76,
+      imageUrl: "http://dummyimage.com/143x143.png/cc0000/ffffff",
+    },
+  },
+  {
+    id: 6,
+    bookId: 3,
+    date: "2019-01-03",
+    status: "Cancelled",
+    book: {
+      id: 3,
+      title: "Any Questions for Ben?",
+      description:
+        "Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst.",
+      author: "Marie-ann Colquit",
+      pageCount: 469,
+      isbn: "383281888-X",
+      price: 45.32,
+      imageUrl: "http://dummyimage.com/169x176.bmp/cc0000/ffffff",
+    },
   },
 ];
 
