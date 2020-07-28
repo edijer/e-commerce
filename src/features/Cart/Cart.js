@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { compose } from "recompose";
 import { withRouter } from "react-router-dom";
 import clsx from "clsx";
+import PropTypes from "prop-types";
 
 import { setTitle } from "../../stores/currentPageSlice";
 import { addToCart } from "../../stores/cartSlice";
@@ -82,6 +83,13 @@ const Cart = (props) => {
       </div>
     </div>
   );
+};
+
+Cart.propTypes = {
+  history: PropTypes.object.isRequired,
+  cart: PropTypes.object.isRequired,
+  setTitle: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default compose(

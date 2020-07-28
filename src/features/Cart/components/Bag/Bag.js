@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { currency } from "../../../../util/format";
 import css from "./Bag.module.css";
@@ -49,6 +50,12 @@ const Bag = (props) => {
       </div>
     </div>
   );
+};
+
+Bag.propTypes = {
+  cart: PropTypes.object.isRequired,
+  handleAddToCart: PropTypes.func.isRequired,
+  handleRemoveFromCart: PropTypes.func.isRequired,
 };
 
 export default Bag;

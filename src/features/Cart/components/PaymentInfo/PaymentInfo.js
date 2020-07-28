@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { currency } from "../../../../util/format";
 import css from "../../Cart.module.css";
@@ -31,6 +32,11 @@ const PaymentInfo = (props) => {
       </div>
     </div>
   );
+};
+
+PaymentInfo.propTypes = {
+  cart: PropTypes.object.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default PaymentInfo;

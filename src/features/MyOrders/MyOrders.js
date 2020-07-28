@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import { currency, longDate } from "../../util/format";
 import { setTitle } from "../../stores/currentPageSlice";
@@ -73,6 +74,13 @@ const MyOrders = (props) => {
       </div>
     </div>
   );
+};
+
+MyOrders.propTypes = {
+  orders: PropTypes.object.isRequired,
+  loadOrders: PropTypes.func.isRequired,
+  setTitle: PropTypes.func.isRequired,
+  defaultLimit: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyOrders);
