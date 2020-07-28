@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import { setTitle } from "../../stores/currentPageSlice";
 import { addToCart } from "../../stores/cartSlice";
 import { createCartInfo } from "../../types/cartInfo";
-import { Bag, PaymentInfo } from "./components";
+import { Bag, PaymentInfo, Shipping } from "./components";
 import * as ROUTES from "../../Routes";
 import css from "./Cart.module.css";
 
@@ -57,8 +57,8 @@ const Cart = (props) => {
     <div>
       <div className={css.root}>
         <div className={css.main}>
-          <div className={css.billing}>
-            <h3>Shipping Address</h3>
+          <div>
+            <Shipping />
           </div>
           <div>
             <Bag
