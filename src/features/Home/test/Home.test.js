@@ -1,10 +1,8 @@
 import React from "react";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
-import { render, waitFor } from "@testing-library/react";
+import { waitFor, screen } from "@testing-library/react";
 
-import { store } from "../../../stores";
+import { render } from "../../../test-util";
 import * as bookApi from "../../../api/bookApi";
 import Home from "../Home";
 
@@ -48,13 +46,7 @@ describe("<Home />", () => {
       page: 1,
     });
 
-    const { queryByText, getAllByRole, getByText } = render(
-      <BrowserRouter>
-        <Provider store={store}>
-          <Home limit={2} />
-        </Provider>
-      </BrowserRouter>
-    );
+    const { queryByText, getAllByRole } = render(<Home />);
 
     await waitFor(() => expect(getBooksStub).toHaveBeenCalledTimes(1));
 
@@ -83,6 +75,9 @@ describe("<Home />", () => {
     expect(listItems[1].querySelector(".bookDescription").innerHTML).toBe(
       books[1].description
     );
+
+    const button = queryByText("Show More (2 of 5)");
+    expect(button).not.toBeNull();
   });
 
   it("should display No books available message", async () => {
@@ -95,13 +90,7 @@ describe("<Home />", () => {
       page: 1,
     });
 
-    const { queryByText, queryAllByRole } = render(
-      <BrowserRouter>
-        <Provider store={store}>
-          <Home limit={2} />
-        </Provider>
-      </BrowserRouter>
-    );
+    const { queryByText, queryAllByRole } = render(<Home limit={2} />);
 
     await waitFor(() => expect(getBooksStub).toHaveBeenCalledTimes(1));
 
