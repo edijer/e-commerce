@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import { currency, longDate } from "../../util/format";
 import { setTitle } from "../../stores/currentPageSlice";
 import { loadOrders } from "../../stores/orderSlice";
+import * as ROUTES from "../../Routes";
 import css from "./MyOrders.module.css";
 
 const mapDispatchToProps = (dispatch) => {
@@ -61,7 +63,17 @@ const MyOrders = (props) => {
                   className={css.bookThumbnail}
                 />
                 <div className={css.bookDetails}>
-                  <span className="text-md">{order.book.title}</span>
+                  <Link
+                    to={{
+                      pathname: ROUTES.DETAILS,
+                      state: {
+                        book: order.book,
+                      },
+                    }}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <span className="text-md">{order.book.title}</span>
+                  </Link>
                   <span className="text-xs">{`Author: ${order.book.author}`}</span>
                   <span className="text-xs">{`Price: ${currency(
                     order.book.price
