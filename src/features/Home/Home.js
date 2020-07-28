@@ -44,6 +44,14 @@ const Home = (props) => {
     setPage(page + 1);
   };
 
+  if (books.loaded && books.items.length === 0) {
+    return (
+      <div className={css.root} role="alert">
+        <span>There are no books available.</span>
+      </div>
+    );
+  }
+
   return (
     <div className={css.root}>
       <div className={css.cards} role="list">

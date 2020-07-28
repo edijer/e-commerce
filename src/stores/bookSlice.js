@@ -12,13 +12,14 @@ export const loadBooks = createAsyncThunk("books/loadBooks", async (args) => {
 
 const bookSlice = createSlice({
   name: "books",
-  initialState: { totalCount: 0, items: [] },
+  initialState: { totalCount: 0, items: [], loaded: false },
   reducers: {
     // non async reducers
   },
   extraReducers: {
     // async reducers
     [loadBooks.fulfilled]: (state, { payload }) => {
+      state.loaded = true;
       state.totalCount = payload.totalCount;
       state.items =
         payload.page === 1 ? payload.books : state.items.concat(payload.books);

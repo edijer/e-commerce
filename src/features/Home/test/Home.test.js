@@ -2,7 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
-import { render, waitFor, screen } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 
 import { store } from "../../../stores";
 import * as bookApi from "../../../api/bookApi";
@@ -83,5 +83,32 @@ describe("<Home />", () => {
     expect(listItems[1].querySelector(".bookDescription").innerHTML).toBe(
       books[1].description
     );
+  });
+
+  it("should display No books available message", async () => {
+    const books = [];
+
+    getBooksStub = jest.spyOn(bookApi, "getBooks");
+    getBooksStub.mockResolvedValue({
+      totalCount: 0,
+      books: books,
+      page: 1,
+    });
+
+    const { queryByText, queryAllByRole } = render(
+      <BrowserRouter>
+        <Provider store={store}>
+          <Home limit={2} />
+        </Provider>
+      </BrowserRouter>
+    );
+
+    await waitFor(() => expect(getBooksStub).toHaveBeenCalledTimes(1));
+
+    const text = queryByText("There are no books available.");
+    expect(text).not.toBeNull();
+
+    const listItems = queryAllByRole("listitem");
+    expect(listItems.length).toBe(0);
   });
 });
