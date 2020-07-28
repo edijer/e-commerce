@@ -574,9 +574,31 @@ const rates = [
   },
 ];
 
+const orders = [
+  {
+    id: 1,
+    bookId: 21,
+    date: "2020-01-01",
+    status: "Delivered",
+  },
+  {
+    id: 2,
+    bookId: 22,
+    date: "2020-01-01",
+    status: "Delivered",
+  },
+  {
+    id: 3,
+    bookId: 23,
+    date: "2020-01-01",
+    status: "Cancelled",
+  },
+];
+
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
   books,
   cart,
   rates,
+  orders,
 };
