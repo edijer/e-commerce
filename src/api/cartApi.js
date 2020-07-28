@@ -1,4 +1,4 @@
-export const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1/`;
+const apiUrl = `${process.env.REACT_APP_API_URL}/api/v1/`;
 
 export const getCart = async () => {
   try {
