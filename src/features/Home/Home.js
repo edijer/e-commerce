@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { compose } from "recompose";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 
 import { Card } from "./components";
 import { loadBooks } from "../../stores/bookSlice";
+import { addToCart } from "../../stores/cartSlice";
+import * as ROUTES from "../../Routes";
 import css from "./Home.module.css";
 
 const mapDispatchToProps = (dispatch) => {
   return {
     loadBooks: (page, limit) => {
       dispatch(loadBooks({ page, limit }));
+    },
+    addToCart: async (bookId) => {
+      await dispatch(addToCart({ bookId }));
     },
   };
 };
@@ -21,7 +28,7 @@ const mapStateToProps = (state) => {
 };
 
 const Home = (props) => {
-  const { books, loadBooks, defaultLimit = 20 } = props;
+  const { history, books, loadBooks, addToCart, defaultLimit = 20 } = props;
 
   const [page, setPage] = useState(0);
   const [limit] = useState(defaultLimit);
@@ -29,6 +36,11 @@ const Home = (props) => {
   useEffect(() => {
     loadBooks(page + 1, limit);
   }, [page, limit, loadBooks]);
+
+  const handleBuyNow = async (bookId) => {
+    await addToCart(bookId);
+    history.push(ROUTES.CART);
+  };
 
   const handleShowMore = () => {
     setPage(page + 1);
@@ -38,7 +50,7 @@ const Home = (props) => {
     <div className={css.root}>
       <div className={css.cards}>
         {books.items.map((book) => {
-          return <Card book={book} key={book.id} />;
+          return <Card book={book} key={book.id} handleBuyNow={handleBuyNow} />;
         })}
       </div>
       {books.totalCount !== books.items.length && (
@@ -53,9 +65,14 @@ const Home = (props) => {
 };
 
 Home.propTypes = {
+  history: PropTypes.object.isRequired,
   books: PropTypes.object.isRequired,
   loadBooks: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
   defaultLimit: PropTypes.number,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter
+)(Home);

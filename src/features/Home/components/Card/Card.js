@@ -1,29 +1,13 @@
 import React from "react";
-import { connect } from "react-redux";
-import { compose } from "recompose";
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { addToCart } from "../../../../stores/cartSlice";
 import css from "./Card.module.css";
 import * as ROUTES from "../../../../Routes";
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addToCart: async (bookId) => {
-      await dispatch(addToCart({ bookId }));
-    },
-  };
-};
-
 const Card = (props) => {
-  const { history, book, addToCart } = props;
-
-  const handleBuyNow = async () => {
-    await addToCart(book.id);
-    history.push(ROUTES.CART);
-  };
+  const { book, handleBuyNow } = props;
 
   return (
     <div className={css.card} key={book.id}>
@@ -54,7 +38,7 @@ const Card = (props) => {
       <div className={css.bookActionSection}>
         <button
           className={clsx("btn btn-primary", css.button)}
-          onClick={handleBuyNow}
+          onClick={() => handleBuyNow(book.id)}
         >
           Buy Now
         </button>
@@ -64,13 +48,13 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
-  history: PropTypes.object.isRequired,
   book: PropTypes.shape({
     id: PropTypes.number.isRequired,
     imageUrl: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }),
+  handleBuyNow: PropTypes.func.isRequired,
 };
 
-export default compose(connect(null, mapDispatchToProps), withRouter)(Card);
+export default Card;
