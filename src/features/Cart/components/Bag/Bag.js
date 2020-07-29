@@ -1,12 +1,37 @@
 import React from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+import { addToCart } from "../../../../stores/cartSlice";
+import { createCartInfo } from "../../../../types/cartInfo";
 import { currency } from "../../../../util/format";
 import css from "./Bag.module.css";
 import cartCss from "../../Cart.module.css";
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: async (bookId) => {
+      await dispatch(addToCart({ bookId }));
+    },
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    cart: createCartInfo(state.cart.items, state.rate),
+  };
+};
+
 const Bag = (props) => {
-  const { cart, handleAddToCart, handleRemoveFromCart } = props;
+  const { cart, addToCart } = props;
+
+  const handleAddToCart = async (bookId) => {
+    await addToCart(bookId);
+  };
+
+  const handleRemoveFromCart = (bookId) => {
+    console.log(`Removing book id ${bookId} to be implmented next time. :)`);
+  };
 
   return (
     <div>
@@ -54,8 +79,7 @@ const Bag = (props) => {
 
 Bag.propTypes = {
   cart: PropTypes.object.isRequired,
-  handleAddToCart: PropTypes.func.isRequired,
-  handleRemoveFromCart: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
-export default Bag;
+export default connect(mapStateToProps, mapDispatchToProps)(Bag);

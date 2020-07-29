@@ -1,8 +1,16 @@
 import React from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+import { createCartInfo } from "../../../../types/cartInfo";
 import { currency } from "../../../../util/format";
 import css from "../../Cart.module.css";
+
+const mapStateToProps = (state) => {
+  return {
+    cart: createCartInfo(state.cart.items, state.rate),
+  };
+};
 
 const PaymentRow = (props) => {
   const { title, price } = props;
@@ -39,4 +47,4 @@ PaymentInfo.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default PaymentInfo;
+export default connect(mapStateToProps)(PaymentInfo);

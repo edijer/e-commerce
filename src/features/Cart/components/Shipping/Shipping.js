@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import clsx from "clsx";
+import PropTypes from "prop-types";
 import validate from "validate.js";
 
 import {
@@ -97,6 +98,12 @@ const Shipping = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    setFormData({
+      ...formData,
+      isValid: true,
+      errors: {},
+    });
 
     const errors = validate(formData.values, schema);
 
@@ -225,6 +232,12 @@ const Shipping = (props) => {
       </form>
     </div>
   );
+};
+
+Shipping.propTypes = {
+  shippingInfo: PropTypes.object.isRequired,
+  loadShippingInfo: PropTypes.func.isRequired,
+  addOrUpdateShippingInfo: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Shipping);

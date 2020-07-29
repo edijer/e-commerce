@@ -6,9 +6,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 
 import { setTitle } from "../../stores/currentPageSlice";
-import { addToCart } from "../../stores/cartSlice";
 
-import { createCartInfo } from "../../types/cartInfo";
 import { Bag, PaymentInfo, Shipping } from "./components";
 import * as ROUTES from "../../Routes";
 import css from "./Cart.module.css";
@@ -18,20 +16,11 @@ const mapDispatchToProps = (dispatch) => {
     setTitle: (title) => {
       dispatch(setTitle(title));
     },
-    addToCart: async (bookId) => {
-      await dispatch(addToCart({ bookId }));
-    },
-  };
-};
-
-const mapStateToProps = (state) => {
-  return {
-    cart: createCartInfo(state.cart.items, state.rate),
   };
 };
 
 const Cart = (props) => {
-  const { history, cart, setTitle, addToCart } = props;
+  const { history, setTitle } = props;
 
   useEffect(() => {
     setTitle("Cart");
@@ -41,16 +30,12 @@ const Cart = (props) => {
     };
   }, [setTitle]);
 
-  const handleAddToCart = async (bookId) => {
-    await addToCart(bookId);
-  };
-
-  const handleRemoveFromCart = (bookId) => {
-    console.log(" To be implmented :)");
-  };
-
   const handleCancel = () => {
     history.push(ROUTES.HOME);
+  };
+
+  const handleCheckout = () => {
+    console.log("To be implemented next time.");
   };
 
   return (
@@ -61,14 +46,13 @@ const Cart = (props) => {
             <Shipping />
           </div>
           <div>
-            <Bag
-              cart={cart}
-              handleAddToCart={handleAddToCart}
-              handleRemoveFromCart={handleRemoveFromCart}
-            />
-            <PaymentInfo cart={cart} className={css.paymentInfo} />
+            <Bag />
+            <PaymentInfo className={css.paymentInfo} />
             <div className={css.row}>
-              <button className={clsx("btn btn-primary", css.actionButton)}>
+              <button
+                className={clsx("btn btn-primary", css.actionButton)}
+                onClick={handleCheckout}
+              >
                 Checkout
               </button>
               <button
@@ -87,12 +71,7 @@ const Cart = (props) => {
 
 Cart.propTypes = {
   history: PropTypes.object.isRequired,
-  cart: PropTypes.object.isRequired,
   setTitle: PropTypes.func.isRequired,
-  addToCart: PropTypes.func.isRequired,
 };
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withRouter
-)(Cart);
+export default compose(connect(null, mapDispatchToProps), withRouter)(Cart);
