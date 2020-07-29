@@ -32,3 +32,9 @@
   border: 1px solid #7986cb;
   border-radius: 3px;
 }
+
+.inputError {
+  padding: 10px 0 10px 10px;
+  border: 1px solid #e57373;
+  border-radius: 3px;
+}
