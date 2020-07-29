@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 
 import { setTitle } from "../../stores/currentPageSlice";
 import { addToCart } from "../../stores/cartSlice";
+
 import { createCartInfo } from "../../types/cartInfo";
 import { Bag, PaymentInfo, Shipping } from "./components";
 import * as ROUTES from "../../Routes";
@@ -24,7 +25,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
-  // projection
   return {
     cart: createCartInfo(state.cart.items, state.rate),
   };

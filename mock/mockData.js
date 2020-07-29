@@ -679,10 +679,13 @@ const orders = [
   },
 ];
 
+const addresses = [];
+
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
   books,
   cart,
   rates,
   orders,
+  addresses,
 };

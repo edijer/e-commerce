@@ -1,9 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import clsx from "clsx";
 import validate from "validate.js";
 
+import {
+  loadShippingInfo,
+  addOrUpdateShippingInfo,
+} from "../../../../stores/shippingInfoSlice";
 import css from "./Shipping.module.css";
 import cartCss from "../../Cart.module.css";
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadShippingInfo: async () => {
+      await dispatch(loadShippingInfo());
+    },
+    addOrUpdateShippingInfo: async (address) => {
+      await dispatch(addOrUpdateShippingInfo({ address }));
+    },
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    shippingInfo: state.shippingInfo,
+  };
+};
 
 const schema = {
   firstName: {
@@ -50,21 +72,18 @@ const schema = {
   },
 };
 
-const Shipping = () => {
+const Shipping = (props) => {
+  const { shippingInfo, loadShippingInfo, addOrUpdateShippingInfo } = props;
+
   const [formData, setFormData] = useState({
     isValid: false,
-    values: {
-      firstName: "",
-      lastName: "",
-      addressLine1: "",
-      addressLine2: "",
-      city: "",
-      country: "",
-      postalCode: "",
-      phoneNumber: "",
-    },
+    values: { ...shippingInfo.address },
     errors: {},
   });
+
+  useEffect(() => {
+    loadShippingInfo();
+  }, [loadShippingInfo]);
 
   const handleChange = ({ target }) => {
     setFormData({
@@ -79,8 +98,6 @@ const Shipping = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(formData);
-
     const errors = validate(formData.values, schema);
 
     if (errors) {
@@ -89,6 +106,12 @@ const Shipping = () => {
         isValid: true,
         errors: errors,
       });
+    } else {
+      const address = {
+        ...formData.values,
+      };
+
+      addOrUpdateShippingInfo(address);
     }
   };
 
@@ -204,4 +227,4 @@ const Shipping = () => {
   );
 };
 
-export default Shipping;
+export default connect(mapStateToProps, mapDispatchToProps)(Shipping);
