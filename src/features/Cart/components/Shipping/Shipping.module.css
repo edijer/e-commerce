@@ -1,7 +1,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 98%;
   grid-gap: 15px;
 }
 
@@ -37,4 +37,13 @@
   padding: 10px 0 10px 10px;
   border: 1px solid #e57373;
   border-radius: 3px;
+}
+
+@media (min-width: 991px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    grid-gap: 15px;
+  }
 }
