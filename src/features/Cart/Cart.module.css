@@ -7,7 +7,6 @@
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(479px, auto));
   grid-gap: 20px;
 }
 
@@ -37,4 +36,14 @@
   padding: 0;
   margin-right: 5px;
   width: 100px;
+}
+
+@media (min-width: 767px) {
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(479px, auto));
+    grid-gap: 20px;
+  }
 }
