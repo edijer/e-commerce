@@ -1,6 +1,6 @@
 React test project
 
-# Implementation Notes
+## Implementation Notes
 
 - I didn't use Typescript, I'm still in the process of learning that.
 - API calls are served by [json-server](https://github.com/typicode/json-server) (fake REST API)
