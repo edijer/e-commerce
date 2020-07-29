@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
+import menuIcon from "./menu.svg";
 import "./Navbar.css";
 import { createCartInfo } from "../../types/cartInfo";
 import * as ROUTES from "../../Routes";
@@ -20,6 +21,10 @@ const Navbar = ({ currentPage, cart }) => {
     setShowMenu(!showMenu);
   };
 
+  const handleLinkClick = () => {
+    setShowMenu(false);
+  };
+
   return (
     <nav className="navbar">
       <span className="title">
@@ -33,24 +38,42 @@ const Navbar = ({ currentPage, cart }) => {
         })}
       >
         <li>
-          <NavLink to={ROUTES.HOME} exact className="nav-links">
+          <Link
+            to={ROUTES.HOME}
+            className="nav-links"
+            onClick={handleLinkClick}
+          >
             Home
-          </NavLink>
+          </Link>
         </li>
         <li>
-          <NavLink to={ROUTES.MY_ORDERS} exact className="nav-links">
+          <Link
+            to={ROUTES.MY_ORDERS}
+            className="nav-links"
+            onClick={handleLinkClick}
+          >
             My Orders
-          </NavLink>
+          </Link>
         </li>
         <li>
-          <NavLink to={ROUTES.CART} exact className="nav-links">
+          <Link
+            to={ROUTES.CART}
+            className="nav-links"
+            onClick={handleLinkClick}
+          >
             {cart?.totalCount ? `Cart (${cart.totalCount})` : "Cart"}
-          </NavLink>
+          </Link>
         </li>
       </ul>
       <span className="navbar-toggle">
         <button onClick={handleExpandClick} className="btn btn-link">
-          Expand
+          <img
+            src={menuIcon}
+            alt="menu icon"
+            width="24"
+            height="24"
+            style={{ margin: 0, padding: 0 }}
+          />
         </button>
       </span>
     </nav>
