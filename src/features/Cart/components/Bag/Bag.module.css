@@ -1,20 +1,14 @@
-.cartItemRow {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: row;
-}
-
-.cartHeader {
+.header {
   margin-top: 20px;
   text-align: right;
 }
 
-.cartItemActionSection {
+.itemActionSection {
   margin-top: 10px;
   display: flex;
 }
 
-.cartItemAction {
+.itemAction {
   padding: 0;
   margin-right: 5px;
 }

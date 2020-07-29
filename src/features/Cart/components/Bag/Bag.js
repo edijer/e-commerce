@@ -36,21 +36,23 @@ const Bag = (props) => {
   return (
     <div>
       <h3>Shopping Bag</h3>
-      <div className={css.cartHeader}>Price</div>
+      <div className={css.header}>
+        <span className="text-primary text-bold">Price</span>
+      </div>
       <hr />
       <div>
         {cart.items.map((item) => {
           return (
             <div className={cartCss.row} key={item.book.id}>
-              <div className={cartCss.fullWidth}>
-                <div className={cartCss.bold}>{item.book.title}</div>
+              <div className="full-width">
+                <div className="text-bold">{item.book.title}</div>
                 <div className="text-xs">{`Author: ${item.book.author}`}</div>
                 <div className="text-xs">{`ISBN: ${item.book.isbn}`}</div>
                 <div className="text-xs">
                   <span className="text-primary">{`Quantity: ${item.quantity}`}</span>
                 </div>
-                <div className={css.cartItemActionSection}>
-                  <div className={css.cartItemAction}>
+                <div className={css.itemActionSection}>
+                  <div className={css.itemAction}>
                     <button
                       className="btn btn-link text-sm"
                       onClick={() => handleAddToCart(item.book.id)}
@@ -59,15 +61,17 @@ const Bag = (props) => {
                     </button>
                   </div>
                   <div
-                    className={css.cartItemAction}
+                    className={css.itemAction}
                     onClick={() => handleRemoveFromCart(item.book.id)}
                   >
                     <button className="btn btn-link text-sm">Delete</button>
                   </div>
                 </div>
               </div>
-              <div className={cartCss.bold}>
-                <div className="text-primary">{currency(item.book.price)}</div>
+              <div>
+                <div className="text-primary text-bold">
+                  {currency(item.book.price)}
+                </div>
               </div>
             </div>
           );

@@ -52,12 +52,20 @@
   font-size: 12px !important;
 }
 
+.text-bold {
+  font-weight: bold !important;
+}
+
 .pull-left {
   float: left;
 }
 
 .pull-right {
   float: right;
+}
+
+.full-width {
+  width: 100%;
 }
 
 hr {

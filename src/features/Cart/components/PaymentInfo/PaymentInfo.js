@@ -16,9 +16,9 @@ const PaymentRow = (props) => {
   const { title, price } = props;
   return (
     <div className={css.row}>
-      <div className={css.fullWidth}>{title}</div>
-      <div className={css.bold}>
-        <span className="text-primary">{currency(price)}</span>
+      <div className="full-width">{title}</div>
+      <div>
+        <span className="text-primary text-bold">{currency(price)}</span>
       </div>
     </div>
   );
