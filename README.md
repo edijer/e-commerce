@@ -1,3 +1,5 @@
+React test project
+
 # Implementation Notes
 
 - I didn't use Typescript, I'm still in the process of learning that.
