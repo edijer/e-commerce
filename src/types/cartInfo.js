@@ -5,20 +5,26 @@ const cartBase = {
     return this.items.reduce((sum, item) => sum + item.quantity, 0);
   },
   get subTotal() {
-    return this.items.reduce(
+    const value = this.items.reduce(
       (sum, item) => sum + item.book.price * item.quantity,
       0
     );
+
+    return round2dp(value);
   },
   get taxFee() {
-    return this.subTotal * this.rate.tax;
+    return round2dp(this.subTotal * this.rate.tax);
   },
   get shippingFee() {
-    return this.rate.shipping;
+    return round2dp(this.rate.shipping);
   },
   get grandTotal() {
-    return this.subTotal + this.taxFee + this.shippingFee;
+    return round2dp(this.subTotal + this.taxFee + this.shippingFee);
   },
+};
+
+const round2dp = (number) => {
+  return Math.round((number + Number.EPSILON) * 100) / 100;
 };
 
 export const createCartInfo = (cartItems, rate) => {
